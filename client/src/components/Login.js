@@ -37,6 +37,7 @@ class Login extends Component {
           password: ''
         });
         if (err.response.status === 401) {
+          console.log(err.response.status);
           alert('이름과 비밀번호를 정확히 입력해주세요!');
         }
       });

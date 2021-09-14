@@ -10,7 +10,6 @@ class App extends Component {
   state = {
     isLogin: false,
     status: ''
-
   }
 
   constructor(props) {
@@ -33,11 +32,11 @@ class App extends Component {
           }
         })
       .then(res => {
+        const { login, connectedToDatabase } = res.data;
         this.setState({
-          isLogin: res.data.isLogin,
-          status: res.data.isConnectedToDatabase
+          isLogin: login,
+          status: connectedToDatabase
         }, () => {
-          console.log('시작');
           this.props.history.push('/');
         });
       })
