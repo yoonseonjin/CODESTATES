@@ -3,10 +3,10 @@ package com.codestates.seb.DeployServer;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+// @SpringBootTest
 class DeployServerApplicationTests {
 
-	@Test
+// 	@Test
 	void contextLoads() {
 	}
 
