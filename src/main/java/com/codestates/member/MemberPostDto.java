@@ -3,6 +3,7 @@ package com.codestates.member;
 import javax.validation.constraints.*;
 
 public class MemberPostDto {
+    @NotBlank
     @Email
     private String email;
 
