@@ -52,6 +52,6 @@ public class CoffeeController {
         // TODO CoffeeService 클래스와 연동하세요.
         // TODO DTO <-> Entity 변환 Mapper를 적용하세요.
 
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

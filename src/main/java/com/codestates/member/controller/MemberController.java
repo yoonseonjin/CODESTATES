@@ -79,6 +79,6 @@ public class MemberController {
         System.out.println("# delete member");
         memberService.deleteMember(memberId);
 
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
