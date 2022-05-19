@@ -46,6 +46,6 @@ public class CoffeeController {
     public ResponseEntity deleteCoffee(@PathVariable("coffee-id") long coffeeId) {
         // No need business logic
 
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

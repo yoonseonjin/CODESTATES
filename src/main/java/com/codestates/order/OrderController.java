@@ -34,6 +34,4 @@ public class OrderController {
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
-    // 커피 주문 정보는 구현해야 할 실습이 없습니다!
 }

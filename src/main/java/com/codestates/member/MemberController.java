@@ -50,7 +50,7 @@ public class MemberController {
         System.out.println("# deleted memberId: " + memberId);
         // No need business logic
 
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     // 회원 정보는 구현해야 할 실습이 없습니다!
