@@ -13,13 +13,13 @@ public class MemberController {
     @PostMapping
     public ResponseEntity postMember(@RequestParam("email") String email,
                                      @RequestParam("name") String name,
-                                     @RequestParam("phone") String phoneNumber) {
+                                     @RequestParam("phone") String phone) {
         Map<String, String> map = new HashMap<>();
         map.put("email", email);
         map.put("name", name);
-        map.put("phone", phoneNumber);
+        map.put("phone", phone);
 
-        return new ResponseEntity<Map>(map, HttpStatus.CREATED);
+        return new ResponseEntity<>(map, HttpStatus.CREATED);
     }
 
     @GetMapping("/{member-id}")
@@ -27,7 +27,7 @@ public class MemberController {
         System.out.println("# memberId: " + memberId);
 
         // not implementation
-        return new ResponseEntity<Map>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping
@@ -36,7 +36,7 @@ public class MemberController {
 
         // not implementation
 
-        return new ResponseEntity<Map>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 

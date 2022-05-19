@@ -20,7 +20,7 @@ public class CoffeeController {
         map.put("price", price);
 
 
-        return new ResponseEntity<Map>(map, HttpStatus.CREATED);
+        return new ResponseEntity<>(map, HttpStatus.CREATED);
     }
 
     @GetMapping("/{coffee-id}")
@@ -29,7 +29,7 @@ public class CoffeeController {
 
         // not implementation
 
-        return new ResponseEntity<Map>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping
@@ -38,7 +38,7 @@ public class CoffeeController {
 
         // not implementation
 
-        return new ResponseEntity<Map>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     //---------------- 여기서 부터 아래에 코드를 구현하세요! -------------------//

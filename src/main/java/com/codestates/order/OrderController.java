@@ -17,7 +17,7 @@ public class OrderController {
         map.put("memberId", memberId);
         map.put("coffeeId", coffeeId);
 
-        return new ResponseEntity<Map>(map, HttpStatus.CREATED);
+        return new ResponseEntity<>(map, HttpStatus.CREATED);
     }
 
     @GetMapping("/{order-id}")
@@ -26,7 +26,7 @@ public class OrderController {
 
         // not implementation
 
-        return new ResponseEntity<Map>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping
@@ -35,7 +35,7 @@ public class OrderController {
 
         // not implementation
 
-        return new ResponseEntity<Map>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     // 커피 주문 정보는 구현해야 할 실습이 없습니다!
