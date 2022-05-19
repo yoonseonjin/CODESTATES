@@ -48,8 +48,10 @@ public class OrderController {
     }
 
     @DeleteMapping("/{order-id}")
-    public void cancelOrder(@PathVariable("order-id") long orderId) {
+    public ResponseEntity cancelOrder(@PathVariable("order-id") long orderId) {
         System.out.println("# cancel order");
         orderService.cancelOrder();
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

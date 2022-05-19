@@ -63,6 +63,6 @@ public class CoffeeController {
     public ResponseEntity deleteCoffee(@PathVariable("coffee-id") long coffeeId) {
         coffeeService.deleteCoffee(coffeeId);
 
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
