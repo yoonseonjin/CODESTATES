@@ -34,7 +34,6 @@ public class GlobalExceptionAdvice {
         return response;
     }
 
-    // GlobalExceptionAdvice 기능 추가 1
     @ExceptionHandler
     public ResponseEntity handleBusinessLogicException(BusinessLogicException e) {
         final ErrorResponse response = ErrorResponse.of(e.getExceptionCode());
@@ -43,7 +42,6 @@ public class GlobalExceptionAdvice {
                 .getStatus()));
     }
 
-    // GlobalExceptionAdvice 기능 추가 2
     @ExceptionHandler
     @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
     public ErrorResponse handleHttpRequestMethodNotSupportedException(
@@ -53,8 +51,7 @@ public class GlobalExceptionAdvice {
 
         return response;
     }
-
-    // GlobalExceptionAdvice 기능 추가 3
+    
     @ExceptionHandler
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ErrorResponse handleException(Exception e) {
