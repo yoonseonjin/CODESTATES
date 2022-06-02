@@ -1,9 +1,11 @@
 package com.codestates.coffee.service;
 
 import com.codestates.coffee.entity.Coffee;
+import com.codestates.order.entity.Order;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CoffeeService {
@@ -27,5 +29,10 @@ public class CoffeeService {
     }
 
     public void deleteCoffee(long coffeeId) {
+    }
+
+    // 주문에 해당하는 커피 정보 조회
+    public List<Coffee> findOrderedCoffees(Order order) {
+        return null;
     }
 }

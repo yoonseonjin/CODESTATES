@@ -16,7 +16,7 @@ import javax.validation.constraints.Positive;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v8/coffees")
+@RequestMapping("/v10/coffees")
 @Validated
 public class CoffeeController {
     private CoffeeService coffeeService;

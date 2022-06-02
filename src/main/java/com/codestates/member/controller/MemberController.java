@@ -62,7 +62,8 @@ public class MemberController {
     public ResponseEntity getMember(
             @PathVariable("member-id") @Positive long memberId) {
         Member response = memberService.findMember(memberId);
-        return new ResponseEntity<>(mapper.memberToMemberResponseDto(response), HttpStatus.OK);
+        return new ResponseEntity<>(mapper.memberToMemberResponseDto(response)
+                , HttpStatus.OK);
     }
 
     @GetMapping
@@ -76,7 +77,6 @@ public class MemberController {
     @DeleteMapping("/{member-id}")
     public ResponseEntity deleteMember(
             @PathVariable("member-id") @Positive long memberId) {
-        System.out.println("# delete member");
         memberService.deleteMember(memberId);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
