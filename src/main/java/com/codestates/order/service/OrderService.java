@@ -23,7 +23,7 @@ public class OrderService {
         throw new BusinessLogicException(ExceptionCode.NOT_IMPLEMENTATION);
     }
 
-    // 주문 수정 메서드는 사용하지 않습니다.
+    // TODO 주문 상태 수정 메서드는 JPA 학습에서 추가됩니다.
 
     public List<Order> findOrders() {
         // TODO should business logic
