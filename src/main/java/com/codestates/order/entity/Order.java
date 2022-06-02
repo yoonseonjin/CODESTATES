@@ -10,7 +10,7 @@ import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 // TODO V10
@@ -25,7 +25,7 @@ public class Order {
     private AggregateReference<Member, Long> memberId;
 
     @MappedCollection(idColumn = "ORDER_ID")
-    private Set<CoffeeRef> orderCoffees = new HashSet<>();
+    private Set<CoffeeRef> orderCoffees = new LinkedHashSet<>();
 
     private OrderStatus orderStatus = OrderStatus.ORDER_REQUEST;
     private LocalDateTime createdAt;
