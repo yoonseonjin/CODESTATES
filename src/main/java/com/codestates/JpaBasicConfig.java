@@ -21,7 +21,7 @@ public class JpaBasicConfig {
 
         System.out.println("# Active Profile: many-to-one");
         return args -> {
-            // TODO 이 곳에서 학습할 코드를 타이핑하세요!
+            // TODO 이 곳에 학습할 코드를 타이핑하세요!
         };
     }
 }
