@@ -13,15 +13,7 @@ public class OrderPostDto {
         return memberId;
     }
 
-    public void setMemberId(Long memberId) {
-        this.memberId = memberId;
-    }
-
     public long getCoffeeId() {
         return coffeeId;
-    }
-
-    public void setCoffeeId(Long coffeeId) {
-        this.coffeeId = coffeeId;
     }
 }
