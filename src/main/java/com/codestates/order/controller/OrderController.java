@@ -1,11 +1,9 @@
 package com.codestates.order.controller;
 
-import com.codestates.coffee.entity.Coffee;
 import com.codestates.coffee.service.CoffeeService;
-import com.codestates.dto.MultiResponseDto;
-import com.codestates.dto.SingleResponseDto;
+import com.codestates.response.MultiResponseDto;
+import com.codestates.response.SingleResponseDto;
 import com.codestates.order.dto.OrderPostDto;
-import com.codestates.order.dto.OrderResponseDto;
 import com.codestates.order.entity.Order;
 import com.codestates.order.mapper.OrderMapper;
 import com.codestates.order.service.OrderService;
@@ -18,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/v11/orders")

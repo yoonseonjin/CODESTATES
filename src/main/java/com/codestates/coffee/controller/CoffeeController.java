@@ -2,11 +2,10 @@ package com.codestates.coffee.controller;
 
 import com.codestates.coffee.dto.CoffeePatchDto;
 import com.codestates.coffee.dto.CoffeePostDto;
-import com.codestates.coffee.dto.CoffeeResponseDto;
 import com.codestates.coffee.entity.Coffee;
 import com.codestates.coffee.mapper.CoffeeMapper;
 import com.codestates.coffee.service.CoffeeService;
-import com.codestates.dto.MultiResponseDto;
+import com.codestates.response.MultiResponseDto;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
