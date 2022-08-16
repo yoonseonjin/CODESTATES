@@ -4,41 +4,25 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.Map;
 
 @RestController
 @RequestMapping("/v1/coffees")
 public class CoffeeController {
-    @PostMapping
-    public ResponseEntity postCoffee(@RequestParam("korName") String korName,
-                                     @RequestParam("engName") String engName,
-                                     @RequestParam("price") int price) {
-        Map<String, Object> map = new HashMap<>();
-        map.put("korName", korName);
-        map.put("engName", engName);
-        map.put("price", price);
+    private final Map<Long, Map<String, Object>> coffees = new HashMap<>();
 
+    @PostConstruct
+    public void init() {
+        Map<String, Object> coffee1 = new HashMap<>();
+        long coffeeId = 1L;
+        coffee1.put("coffeeId", coffeeId);
+        coffee1.put("korName", "바닐라 라떼");
+        coffee1.put("engName", "Vanilla Latte");
+        coffee1.put("price", 4500);
 
-        return new ResponseEntity<>(map, HttpStatus.CREATED);
-    }
-
-    @GetMapping("/{coffee-id}")
-    public ResponseEntity getCoffee(@PathVariable("coffee-id") long coffeeId) {
-        System.out.println("# coffeeId: " + coffeeId);
-
-        // not implementation
-
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-    @GetMapping
-    public ResponseEntity getCoffees() {
-        System.out.println("# get Coffees");
-
-        // not implementation
-
-        return new ResponseEntity<>(HttpStatus.OK);
+        coffees.put(coffeeId, coffee1);
     }
 
     //---------------- 여기서 부터 아래에 코드를 구현하세요! -------------------//
