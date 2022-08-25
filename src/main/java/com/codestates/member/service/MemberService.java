@@ -15,15 +15,15 @@ import java.util.List;
 @Service
 public class MemberService {
     public Member createMember(Member member) {
-        // TODO should business logic
+        // should business logic
 
-        // TODO member 객체는 나중에 DB에 저장 후, 되돌려 받는 것으로 변경 필요.
+        // member 객체는 나중에 DB에 저장 후, 되돌려 받는 것으로 변경 필요.
         Member createdMember = member;
         return createdMember;
     }
 
     public Member updateMember(Member member) {
-        // TODO should business logic
+        // should business logic
 
         // member 객체는 나중에 DB에 업데이트 후, 되돌려 받는 것으로 변경 필요.
         Member updatedMember = member;
@@ -31,15 +31,15 @@ public class MemberService {
     }
 
     public Member findMember(long memberId) {
-        // TODO should business logic
-
-        throw new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND);
+        // should business logic
+        return null;
     }
 
-    public List<Member> findMembers() {
-        // TODO should business logic
 
-        // TODO member 객체는 나중에 DB에서 조회하는 것으로 변경 필요.
+    public List<Member> findMembers() {
+        // should business logic
+
+        // member 객체는 나중에 DB에서 조회하는 것으로 변경 필요.
         List<Member> members = List.of(
                 new Member(1, "hgd@gmail.com", "홍길동", "010-1234-5678"),
                 new Member(2, "lml@gmail.com", "이몽룡", "010-1111-2222")
@@ -48,7 +48,7 @@ public class MemberService {
     }
 
     public void deleteMember(long memberId) {
-        // TODO should business logic
+        // should business logic
 
         String logResult = null;
         System.out.println(logResult.toUpperCase());

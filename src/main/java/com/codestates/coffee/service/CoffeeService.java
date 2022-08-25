@@ -16,7 +16,15 @@ public class CoffeeService {
     }
 
     public Coffee findCoffee(long coffeeId) {
+        exists(coffeeId);
+
         return new Coffee(coffeeId, "아메리카노", "Americano", 2500);
+    }
+
+    private void exists(long coffeeId) {
+
+        throw new RuntimeException("does not exist coffee");
+
     }
 
     public List<Coffee> findCoffees() {
