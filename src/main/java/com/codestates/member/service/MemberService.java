@@ -32,7 +32,7 @@ public class MemberService {
 
     public Member findMember(long memberId) {
         // should business logic
-        return null;
+        throw new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND);
     }
 
 
