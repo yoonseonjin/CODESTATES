@@ -14,5 +14,28 @@ public class Calculator {
             4. 연산 결과를 콘솔에 출력합니다.
         */
     // TODO...
+    String operator = " ";
+    double num1 = 0;
+    double num2 = 0;
+
+    System.out.println("첫 번째 숫자 입력: ");
+    num1 = input.nextDouble();
+    System.out.println("연산자 기호 입력: ");
+    operator = input.next();
+    System.out.println("두 번째 숫자 입력: ");
+    num2= input.nextDouble();
+
+    if (operator.equals("+")) {
+      System.out.println(num1 + num2);
+    } else if (operator.equals("-")) {
+      System.out.println(num1 - num2);
+    } else if (operator.equals("*")) {
+      System.out.println(num1 * num2);
+    } else if (operator.equals("/")) {
+      System.out.println(num1 / num2);
+    }
+    else{
+      System.out.println("잘못된 출력");
+    }
   }
 }
