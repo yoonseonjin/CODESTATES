@@ -47,16 +47,49 @@ public class stringifyJSON {
   public String stringify(Object data) {
 
     //입력된 값이 문자열일 경우
+    if (data instanceof String) return String.format("\"%s\"", data); // String.format(포맷, 값);
 
     //입력된 값이 Integer일 경우
+    if (data instanceof Integer) return String.format("%d", data);
 
     //입력된 값이 Boolean일 경우
+    if (data instanceof Boolean) return String.format("%b", data);
 
     //입력된 값이 Object[]일 경우
+    if (data instanceof Object[]) {
+      String init = "[";
+      Object[] arr = (Object[]) data;
+
+      for (Object obj : arr) {
+        init = init + stringify(obj) + ",";
+      } // for문 돌면서 마지막에 붙은 쉼표를 제거하고자 해당 코드 삽입
+      if (init.charAt(init.length()-1)==',') {
+        init = init.substring(0, init.length()-1);
+      }
+      return init + "]";
+    } // 페어가 작성한 코드
 
     //입력된 값이 HashMap일 경우
+    if (data instanceof HashMap) {
+      String init = "{";
+      HashMap hashMap = (HashMap) data;
+
+      for (Object key : hashMap.keySet()) {
+        init = init + stringify(key) + ":" + stringify(hashMap.get(key)) + ",";
+      } // for문 돌면서 마지막에 붙은 쉼표를 제거하고자 해당 코드 삽입
+      if (init.charAt(init.length()-1)==',') {
+        init = init.substring(0, init.length()-1);
+      }
+      return init + "}";
+    } // 페어가 작성한 코드
+
+//    if (data instanceof HashMap) {
+//      HashMap<Object, Object> map = new HashMap<>();
+//      return String.format("%s", data);
+//    } // 내가 작성한 코드(조건 충족 불가)
 
     //지정되지 않은 타입의 경우에는 "null"을 리턴합니다.
+    return "null";
 
   }
 }
