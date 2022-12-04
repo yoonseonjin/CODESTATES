@@ -7,6 +7,7 @@ import com.codestates.order.dto.OrderPostDto;
 import com.codestates.order.entity.Order;
 import com.codestates.order.mapper.OrderMapper;
 import com.codestates.order.service.OrderService;
+import com.codestates.utils.UriCreator;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,12 +16,14 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
+import java.net.URI;
 import java.util.List;
 
 @RestController
 @RequestMapping("/v11/orders")
 @Validated
 public class OrderController {
+    private final static String ORDER_DEFAULT_URL = "/v10/orders";
     private final OrderService orderService;
     private final OrderMapper mapper;
     private final CoffeeService coffeeService;
@@ -36,12 +39,9 @@ public class OrderController {
     @PostMapping
     public ResponseEntity postOrder(@Valid @RequestBody OrderPostDto orderPostDto) {
         Order order = orderService.createOrder(mapper.orderPostDtoToOrder(orderPostDto));
+        URI location = UriCreator.createUri(ORDER_DEFAULT_URL, order.getOrderId());
 
-        // TODO JPA에 맞춰서 커피 정보 변경 필요
-        // List<Coffee> coffees = coffeeService.findOrderedCoffees(order);
-        return new ResponseEntity<>(
-                new SingleResponseDto<>(mapper.orderToOrderResponseDto(order, null)),
-                HttpStatus.CREATED);
+        return ResponseEntity.created(location).build();
     }
 
     @GetMapping("/{order-id}")

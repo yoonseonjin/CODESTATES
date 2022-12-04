@@ -1,9 +1,16 @@
 package com.codestates.order.entity;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.Setter;
+import org.springframework.data.annotation.Id;
 
+@Getter
+@Setter
 public class Order {
-
+    @Id
+    @Setter(AccessLevel.NONE)
+    private long orderId;
 
     public enum OrderStatus {
         ORDER_REQUEST(1, "주문 요청"),
