@@ -18,19 +18,21 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.hamcrest.Matchers.startsWith;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@Transactional
+/**
+ * Controller의 API만 이용하는 방법(리팩토링 후)
+ */
+@Transactional    // 테스트 케이스 하나의 실행이 끝나면 매 번 rollback 처리를 해준다.
 @SpringBootTest
 @AutoConfigureMockMvc
-public class MemberControllerTest3 implements MemberControllerTestHelper {
+public class MemberControllerTest implements MemberControllerTestHelper {
     @Autowired
     private MockMvc mockMvc;
 
@@ -43,6 +45,7 @@ public class MemberControllerTest3 implements MemberControllerTestHelper {
 
     @BeforeEach
     public void init() throws Exception {
+        // given
         this.post = (MemberDto.Post) StubData.MockMember.getRequestBody(HttpMethod.POST);
         String content = gson.toJson(post);
         URI uri = getURI();
@@ -52,30 +55,25 @@ public class MemberControllerTest3 implements MemberControllerTestHelper {
     @Test
     public void postMemberTest() throws Exception {
         // given
-        // init()
+        // init() 에서..
 
         // when
-        // init()
+        // init() 에서..
 
         // then
-        MvcResult result =
-                this.postResultActions
-                                    .andExpect(status().isCreated())
-                                    .andExpect(jsonPath("$.data.email").value(this.post.getEmail()))
-                                    .andExpect(jsonPath("$.data.name").value(this.post.getName()))
-                                    .andExpect(jsonPath("$.data.phone").value(this.post.getPhone()))
-                                    .andReturn();
-
-//        System.out.println(result.getResponse().getContentAsString());
+        this.postResultActions
+                .andExpect(status().isCreated())
+                .andExpect(header().string("Location", is(startsWith("/v11/members/"))));
     }
 
     @Test
     void patchMemberTest() throws Exception {
         // given
-        MemberDto.Patch patch =
-                (MemberDto.Patch) StubData.MockMember.getRequestBody(HttpMethod.PATCH);
-        String content = gson.toJson(patch);
         long memberId = getResponseMemberId();
+
+        MemberDto.Patch patch =
+                (MemberDto.Patch) StubData.MockMember.getRequestBody(HttpMethod.PATCH); // 별도의 Stub Data를 만들어서 재사용
+        String content = gson.toJson(patch);
         URI uri = getURI(memberId);
 
         // when
@@ -90,7 +88,7 @@ public class MemberControllerTest3 implements MemberControllerTestHelper {
     @Test
     void getMemberTest() throws Exception {
         // given
-        // init()
+        // init() 에서..
 
         // when
         long memberId = getResponseMemberId();
@@ -110,11 +108,15 @@ public class MemberControllerTest3 implements MemberControllerTestHelper {
         String content = gson.toJson(new MemberDto.Post("hgd2@gmail.com", "홍길동2",
                 "010-2222-2222"));
         URI uri = getURI();
+
+        // init에서 첫번째 데이터를 DB에 넣어 준 후, 두 번째 데이터 한번 더..
         mockMvc.perform(postRequestBuilder(uri, content));
 
+        String page = "1";
+        String size = "10";
         MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<>();
-        queryParams.add("page", String.valueOf(1));
-        queryParams.add("size", String.valueOf(10));
+        queryParams.add("page", page);
+        queryParams.add("size", size);
 
         // when
         ResultActions actions = mockMvc.perform(getRequestBuilder(uri, queryParams));
@@ -124,6 +126,7 @@ public class MemberControllerTest3 implements MemberControllerTestHelper {
                                 .andExpect(status().isOk())
                                 .andExpect(jsonPath("$.data").isArray())
                                 .andReturn();
+
         List list = JsonPath.parse(result.getResponse().getContentAsString()).read("$.data");
 
         assertThat(list.size(), is(2));
@@ -132,7 +135,7 @@ public class MemberControllerTest3 implements MemberControllerTestHelper {
     @Test
     void deleteMemberTest() throws Exception {
         // given
-        // init()
+        // init() 에서 DB에 넣어준다.
 
         // when
         long memberId = getResponseMemberId();
@@ -145,15 +148,8 @@ public class MemberControllerTest3 implements MemberControllerTestHelper {
 
     private long getResponseMemberId() {
         long memberId;
-        try {
-            String responseMember = this.postResultActions
-                    .andReturn()
-                    .getResponse()
-                    .getContentAsString();
-            memberId = JsonPath.parse(responseMember).read("$.data.memberId", Long.class);
-        } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException(e);
-        }
+        String location = this.postResultActions.andReturn().getResponse().getHeader("Location"); // "/v11/members/1"
+        memberId = Long.parseLong(location.substring(location.lastIndexOf("/") + 1));
 
         return memberId;
     }
