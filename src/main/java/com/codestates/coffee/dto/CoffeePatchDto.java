@@ -41,8 +41,8 @@ public class CoffeePatchDto {
         this.engName = engName;
     }
 
-    public int getPrice() {
-        return price.orElse(0);
+    public Integer getPrice() {
+        return price.orElse(null);
     }
 
     public void setPrice(Optional<Integer> price) {
