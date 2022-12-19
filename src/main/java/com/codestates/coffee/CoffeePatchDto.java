@@ -4,7 +4,6 @@ import com.codestates.validator.NotSpace;
 import org.hibernate.validator.constraints.Range;
 
 import javax.validation.constraints.Pattern;
-import java.util.Optional;
 
 public class CoffeePatchDto {
     private long coffeeId;
