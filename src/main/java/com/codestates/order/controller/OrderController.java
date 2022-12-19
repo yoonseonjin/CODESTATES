@@ -23,7 +23,7 @@ import java.util.List;
 @RequestMapping("/v11/orders")
 @Validated
 public class OrderController {
-    private final static String ORDER_DEFAULT_URL = "/v10/orders";
+    private final static String ORDER_DEFAULT_URL = "/v11/orders";
     private final OrderService orderService;
     private final OrderMapper mapper;
     private final CoffeeService coffeeService;

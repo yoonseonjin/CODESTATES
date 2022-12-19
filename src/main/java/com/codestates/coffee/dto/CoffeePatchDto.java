@@ -5,7 +5,6 @@ import lombok.Getter;
 import org.hibernate.validator.constraints.Range;
 
 import javax.validation.constraints.Pattern;
-import java.util.Optional;
 
 // TODO v10: Getter/Setter 수정
 @Getter
@@ -18,15 +17,15 @@ public class CoffeePatchDto {
     @Pattern(regexp = "^([A-Za-z])(\\s?[A-Za-z])*$", message = "커피명(영문)은 영문이어야 합니다. 예) Cafe Latte")
     private String engName;
 
-    private Optional<@Range(min= 100, max= 50000) Integer> price = Optional.empty();
-
+    @Range(min= 100, max= 50000)
+    private Integer price;
 
 
     public void setCoffeeId(long coffeeId) {
         this.coffeeId = coffeeId;
     }
 
-    public int getPrice() {
-        return price.orElse(0);
+    public Integer getPrice() {
+        return price;
     }
 }
