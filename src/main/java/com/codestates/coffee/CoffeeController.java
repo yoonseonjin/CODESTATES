@@ -36,8 +36,7 @@ public class CoffeeController {
 
         return new ResponseEntity<>(HttpStatus.OK);    // 200 OK
     }
-
-
+    
     // 2. 커피 정보 삭제를 위한 핸들러 서드 구현
     @DeleteMapping("/{coffee-id}")
     public ResponseEntity deleteMember(@PathVariable("coffee-id") long coffeeId) {
