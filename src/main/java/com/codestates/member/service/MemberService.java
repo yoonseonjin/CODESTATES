@@ -1,6 +1,8 @@
 package com.codestates.member.service;
 
 import com.codestates.member.entity.Member;
+import com.codestates.member.exception.BusinessLogicException;
+import com.codestates.member.exception.ExceptionCode;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,10 +33,12 @@ public class MemberService {
     public Member findMember(long memberId) {
         // TODO should business logic
 
+        // 미존재 회원정보(MEMBER_NOT_FOUND)를 BusinessLogicException 생성자의 파라미터로 전달
+        throw new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND);
+
         // TODO member 객체는 나중에 DB에서 조회 하는 것으로 변경 필요.
-        Member member =
-                new Member(memberId, "hgd@gmail.com", "홍길동", "010-1234-5678");
-        return member;
+//        Member member = new Member(memberId, "hgd@gmail.com", "홍길동", "010-1234-5678");
+//        return member;
     }
 
     public List<Member> findMembers() {
