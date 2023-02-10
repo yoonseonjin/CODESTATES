@@ -1,11 +1,14 @@
 package com.codestates.section2week4.member;
 
 import com.codestates.section2week4.DependencyConfig;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class MemberTest {   // 회원 로직 테스트 구현
     public static void main(String[] args) {
-        DependencyConfig dependencyConfig = new DependencyConfig();
-        MemberService memberService = dependencyConfig.memberService();
+        // 스프링 컨테이너에 등록된 빈을 가져온다
+        ApplicationContext ac = new AnnotationConfigApplicationContext(DependencyConfig.class);
+        MemberService memberService = ac.getBean("memberService", MemberService.class);
 
         Member member = new Member(0L, "lucky@codestates.com", "KimLucky", "010-0000-0000");
         memberService.createMember(member);
