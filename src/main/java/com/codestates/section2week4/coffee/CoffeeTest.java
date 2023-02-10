@@ -1,8 +1,11 @@
 package com.codestates.section2week4.coffee;
 
+import com.codestates.section2week4.DependencyConfig;
+
 public class CoffeeTest {   // 커피 로직 테스트 구현
     public static void main(String[] args) {
-        CoffeeService coffeeService = new CoffeeService();
+        DependencyConfig dependencyConfig = new DependencyConfig();
+        CoffeeService coffeeService = dependencyConfig.coffeeService();
 
         Coffee coffee = new Coffee(0L, "바닐라 라떼", "Vanilla Latte", 5500);
         coffeeService.createCoffee(coffee);

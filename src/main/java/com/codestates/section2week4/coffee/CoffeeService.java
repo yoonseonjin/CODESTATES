@@ -1,7 +1,11 @@
 package com.codestates.section2week4.coffee;
 
 public class CoffeeService {
-    private static CoffeeRepository coffeeRepository = new CoffeeRepository();
+    // DI
+    private static CoffeeRepository coffeeRepository;
+    public CoffeeService(CoffeeRepository coffeeRepository) {
+        this.coffeeRepository = coffeeRepository;
+    }
 
     public void createCoffee(Coffee coffee) {
         coffeeRepository.postCoffee(coffee);
