@@ -8,6 +8,7 @@ import java.sql.SQLOutput;
 
 public class SingletonTest {    // 싱글톤 컨테이너 테스트 코드
 
+    // Spring Container 생성
     static AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(DependencyConfig.class);
 
     static MemberService memberService1 = ac.getBean("memberService", MemberService.class);
