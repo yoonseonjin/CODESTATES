@@ -8,11 +8,10 @@ import javax.validation.constraints.Positive;
 import java.util.List;
 
 @Getter
-@Setter
 public class OrderPostDto {
     @Positive
     private long memberId;
 
     @Valid
-    private List<OrderCoffeeDto> orderCoffees;
+    private List<OrderCoffeeDto> orderCoffees;  // 커피 주문 수량
 }

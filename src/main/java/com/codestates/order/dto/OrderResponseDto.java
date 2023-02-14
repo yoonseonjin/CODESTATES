@@ -9,10 +9,10 @@ import java.util.List;
 
 @Getter
 @Setter
-public class OrderResponseDto {
+public class OrderResponseDto { // 응답 데이터
     private long orderId;
     private long memberId;
-    private Order.OrderStatus orderStatus;
-    private List<CoffeeResponseDto> orderCoffees;
-    private LocalDateTime createdAt;
+    private Order.OrderStatus orderStatus;  // 주문 상태
+    private List<OrderCoffeeResponseDto> orderCoffees;   // 커피 주문 수량
+    private LocalDateTime createdAt;    // 주문 시간
 }

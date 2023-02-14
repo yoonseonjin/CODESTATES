@@ -32,7 +32,7 @@ public class Order {
     private Set<CoffeeRef> orderCoffees = new LinkedHashSet<>();
 
     private OrderStatus orderStatus = OrderStatus.ORDER_REQUEST;    // 주문 상태 정보, 기본 값 : ORDER_REQUEST(주문 요청)
-    private LocalDateTime createdAt;    // 주문 등록 시간
+    private LocalDateTime createdAt = LocalDateTime.now();    // 주문 등록 시간
 
     public enum OrderStatus {   // 주문의 상태
         ORDER_REQUEST(1, "주문 요청"),
