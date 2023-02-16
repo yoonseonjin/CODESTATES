@@ -21,7 +21,7 @@ public class JpaBasicConfig {
 
         return args -> {
             // TODO 이 곳에 학습할 코드를 타이핑하세요!
-                        example01();    // 엔티티 클래스 객체를 JPA 영속성 컨텍스트에 저장
+            example01();    // 엔티티 클래스 객체를 JPA 영속성 컨텍스트에 저장
             example02();    // 엔티티 클래스 객체를 JPA 영속성 컨텍스트와 DB 테이블에 저장
             example03();    // 엔티티 클래스 객체를 JPA 영속성 컨텍스트와 DB 테이블에 일괄 저장
             example04();    // 엔티티 변경 감지를 통하여, JPA 영속성 컨텍스트와 DB 테이블에 엔티티 업데이트
